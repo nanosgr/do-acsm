@@ -11,7 +11,7 @@ services:
         GID: "${GID:-1000}"
     environment:
       EMAIL_FROM: ""
-      PGDATABASE: &dbname prod
+      PGDATABASE: &dbname acsm
       PGUSER: &dbuser "odoo"
       PROXY_MODE: "true"
     tty: true

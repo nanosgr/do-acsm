@@ -1,14 +1,16 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v8.4.2
+_commit: v9.0.3
 _src_path: gh:Tecnativa/doodba-copier-template
 backup_dst: ""
 cidr_whitelist: null
-domains_prod: {}
+domains_prod:
+  - hosts:
+      - gestion.aeroclubsanmartin.com.ar
 domains_test: {}
 gitlab_url: ""
-odoo_dbfilter: ^prod
+odoo_dbfilter: ^acsm
 odoo_initial_lang: es_AR
-odoo_listdb: true
+odoo_listdb: false
 odoo_listdb_staging: true
 odoo_oci_image: ""
 odoo_proxy: traefik
@@ -18,7 +20,7 @@ paths_with_crawlers:
 paths_without_crawlers:
   - /web
   - /website/info
-postgres_dbname: prod
+postgres_dbname: acsm
 postgres_exposed: false
 postgres_username: odoo
 postgres_version: "16"
