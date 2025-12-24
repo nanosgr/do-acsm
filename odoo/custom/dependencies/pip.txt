@@ -1,4 +1,11 @@
 git+https://github.com/OCA/openupgradelib.git@master
+git+https://github.com/ingadhoc/pyafipws.git@odoo18
 unicodecsv
 unidecode
 jingtrang
+boto3
+dnspython
+ovh
+paramiko<4
+pyyaml
+tldextract
