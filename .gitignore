@@ -29,3 +29,8 @@
 
 # Project-specific docker configurations
 /.docker/
+
+# Otros archivos que necesito ignorar
+
+AFIP_WEBSERVICES_ARQUITECTURA.md
+INSTALACION_MODULO_URLS.md
