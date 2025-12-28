@@ -29,6 +29,7 @@
 
 # Project-specific docker configurations
 /.docker/
+/.claude/
 
 # Otros archivos que necesito ignorar
 
