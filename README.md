@@ -7,12 +7,47 @@
 
 # acsm - a Doodba deployment
 
-This project is a Doodba scaffolding. Check upstream docs on the matter:
+Odoo 18.0 deployment for Aero Club San Martín (Argentina) with Argentine localization
+and AFIP webservices integration.
 
-- [General Doodba docs](https://github.com/Tecnativa/doodba).
+**Production URL**: https://gestion.aeroclubsanmartin.com.ar
+
+## Quick Start
+
+### Development
+
+```bash
+invoke develop              # First time setup
+invoke start                # Start Odoo
+invoke logs                 # View logs
+```
+
+### Production Deployment
+
+For deploying to production with HTTPS/Let's Encrypt, see:
+
+- **Quick solution**: [docs/RESUMEN_EJECUTIVO.md](docs/RESUMEN_EJECUTIVO.md)
+- **Complete guide**:
+  [docs/GUIA_DEPLOYMENT_PRODUCCION.md](docs/GUIA_DEPLOYMENT_PRODUCCION.md)
+- **Quick reference**:
+  [docs/COMANDOS_RAPIDOS_DEPLOYMENT.md](docs/COMANDOS_RAPIDOS_DEPLOYMENT.md)
+- **SSL troubleshooting**: [docs/TROUBLESHOOTING_SSL.md](docs/TROUBLESHOOTING_SSL.md)
+
+## Documentation
+
+- [CLAUDE.md](CLAUDE.md) - Development guide for Claude Code
+- [docs/README.md](docs/README.md) - Deployment documentation index
+- [AFIP_WEBSERVICES_ARQUITECTURA.md](AFIP_WEBSERVICES_ARQUITECTURA.md) - AFIP
+  webservices architecture
+
+## Doodba Resources
+
+This project is based on Doodba. Check upstream docs:
+
+- [General Doodba docs](https://github.com/Tecnativa/doodba)
 - [Doodba copier template docs](https://github.com/Tecnativa/doodba-copier-template)
 - [Doodba QA docs](https://github.com/Tecnativa/doodba-qa)
 
-# Credits
+## Credits
 
 This project is maintained by: VikingoSoftware
