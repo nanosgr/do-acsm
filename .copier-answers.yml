@@ -5,7 +5,7 @@ backup_dst: ""
 cidr_whitelist: null
 domains_prod:
   - hosts:
-      - gestion.aeroclubsanmartin.com.ar/
+      - gestion.aeroclubsanmartin.com.ar
 domains_test: {}
 gitlab_url: ""
 odoo_dbfilter: ^acsm
