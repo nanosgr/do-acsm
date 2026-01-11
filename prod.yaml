@@ -6,7 +6,7 @@ services:
       file: common.yaml
       service: odoo
     restart: unless-stopped
-    hostname: "gestion.aeroclubsanmartin.com.ar//"
+    hostname: "gestion.aeroclubsanmartin.com.ar/"
     env_file:
       - .docker/odoo.env
       - .docker/db-access.env
@@ -23,14 +23,14 @@ services:
       default:
       inverseproxy_shared:
     labels:
-      doodba.domain.main: "gestion.aeroclubsanmartin.com.ar//"
+      doodba.domain.main: "gestion.aeroclubsanmartin.com.ar/"
       traefik.enable: "true"
-      traefik.domain: "gestion.aeroclubsanmartin.com.ar//"
+      traefik.domain: "gestion.aeroclubsanmartin.com.ar/"
       traefik.forbiddenCrawlers-0.frontend.headers.customResponseHeaders:
         "X-Robots-Tag:noindex, nofollow"
-      traefik.forbiddenCrawlers-0.frontend.rule: Host(`gestion.aeroclubsanmartin.com.ar//`);Path:/web,/web/{anything:.*},/website/info,/website/info/{anything:.*}
-      traefik.main-0.frontend.rule: Host(`gestion.aeroclubsanmartin.com.ar//`)
-      traefik.longpolling-0.frontend.rule: Host(`gestion.aeroclubsanmartin.com.ar//`);Path:/websocket,/websocket/{anything:.*}
+      traefik.forbiddenCrawlers-0.frontend.rule: Host(`gestion.aeroclubsanmartin.com.ar/`);Path:/web,/web/{anything:.*},/website/info,/website/info/{anything:.*}
+      traefik.main-0.frontend.rule: Host(`gestion.aeroclubsanmartin.com.ar/`)
+      traefik.longpolling-0.frontend.rule: Host(`gestion.aeroclubsanmartin.com.ar/`);Path:/websocket,/websocket/{anything:.*}
       traefik.longpolling-0.port: 8072
       traefik.http.middlewares.acsm-18-0-prod-buffering.buffering.retryExpression:
         IsNetworkError() && Attempts() < 5
@@ -43,13 +43,13 @@ services:
       traefik.http.middlewares.acsm-18-0-prod-override-ws-headers.headers.customRequestHeaders.X-Forwarded-Proto: "https"
       traefik.http.services.acsm-18-0-prod-main.loadbalancer.server.port: 8069
       traefik.http.services.acsm-18-0-prod-longpolling.loadbalancer.server.port: 8072
-      traefik.http.routers.acsm-18-0-prod-main-0.rule: Host(`gestion.aeroclubsanmartin.com.ar//`)
+      traefik.http.routers.acsm-18-0-prod-main-0.rule: Host(`gestion.aeroclubsanmartin.com.ar/`)
       traefik.http.routers.acsm-18-0-prod-main-0.service: acsm-18-0-prod-main
       traefik.http.routers.acsm-18-0-prod-main-0.middlewares:
         acsm-18-0-prod-addSTS, acsm-18-0-prod-buffering, acsm-18-0-prod-compress,
         acsm-18-0-prod-forceSecure
       traefik.http.routers.acsm-18-0-prod-main-0.priority: 1
-      traefik.http.routers.acsm-18-0-prod-main-secure-0.rule: Host(`gestion.aeroclubsanmartin.com.ar//`)
+      traefik.http.routers.acsm-18-0-prod-main-secure-0.rule: Host(`gestion.aeroclubsanmartin.com.ar/`)
       traefik.http.routers.acsm-18-0-prod-main-secure-0.service: acsm-18-0-prod-main
       traefik.http.routers.acsm-18-0-prod-main-secure-0.middlewares:
         acsm-18-0-prod-addSTS, acsm-18-0-prod-buffering, acsm-18-0-prod-compress,
@@ -58,14 +58,14 @@ services:
       traefik.http.routers.acsm-18-0-prod-main-secure-0.tls: "true"
       traefik.http.routers.acsm-18-0-prod-main-secure-0.tls.certResolver: letsencrypt
       traefik.http.routers.acsm-18-0-prod-longpolling-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar//`) && Path(`/websocket`)
+        Host(`gestion.aeroclubsanmartin.com.ar/`) && Path(`/websocket`)
       traefik.http.routers.acsm-18-0-prod-longpolling-0.service: acsm-18-0-prod-longpolling
       traefik.http.routers.acsm-18-0-prod-longpolling-0.middlewares:
         acsm-18-0-prod-addSTS, acsm-18-0-prod-forceSecure,
         acsm-18-0-prod-override-ws-headers
       traefik.http.routers.acsm-18-0-prod-longpolling-0.priority: 20
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar//`) && Path(`/websocket`)
+        Host(`gestion.aeroclubsanmartin.com.ar/`) && Path(`/websocket`)
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.service: acsm-18-0-prod-longpolling
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.middlewares:
         acsm-18-0-prod-addSTS, acsm-18-0-prod-forceSecure,
@@ -74,7 +74,7 @@ services:
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.tls: "true"
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.tls.certResolver: letsencrypt
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar//`) && (PathPrefix(`/web/`,
+        Host(`gestion.aeroclubsanmartin.com.ar/`) && (PathPrefix(`/web/`,
         `/website/info/`) || Path(`/web`, `/website/info`))
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-0.service: acsm-18-0-prod-main
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-0.middlewares:
@@ -82,7 +82,7 @@ services:
         acsm-18-0-prod-forbid-crawlers, acsm-18-0-prod-forceSecure
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-0.priority: 10
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-secure-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar//`) && (PathPrefix(`/web/`,
+        Host(`gestion.aeroclubsanmartin.com.ar/`) && (PathPrefix(`/web/`,
         `/website/info/`) || Path(`/web`, `/website/info`))
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-secure-0.service: acsm-18-0-prod-main
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-secure-0.middlewares:
@@ -92,7 +92,7 @@ services:
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-secure-0.tls: "true"
       traefik.http.routers.acsm-18-0-prod-forbiddenCrawlers-secure-0.tls.certResolver: letsencrypt
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar//`) && (PathPrefix(`/web/image/website/`)
+        Host(`gestion.aeroclubsanmartin.com.ar/`) && (PathPrefix(`/web/image/website/`)
         || Path(`/web/image/website`))
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-0.service: acsm-18-0-prod-main
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-0.middlewares:
@@ -100,7 +100,7 @@ services:
         acsm-18-0-prod-forceSecure
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-0.priority: 100
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-secure-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar//`) && (PathPrefix(`/web/image/website/`)
+        Host(`gestion.aeroclubsanmartin.com.ar/`) && (PathPrefix(`/web/image/website/`)
         || Path(`/web/image/website`))
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-secure-0.service: acsm-18-0-prod-main
       traefik.http.routers.acsm-18-0-prod-allowedCrawlers-secure-0.middlewares:
