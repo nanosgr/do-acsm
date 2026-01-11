@@ -1,11 +1,11 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v9.0.3
+_commit: v9.0.5
 _src_path: gh:Tecnativa/doodba-copier-template
 backup_dst: ""
 cidr_whitelist: null
 domains_prod:
   - hosts:
-      - gestion.aeroclubsanmartin.com.ar
+      - gestion.aeroclubsanmartin.com.ar//
 domains_test: {}
 gitlab_url: ""
 odoo_dbfilter: ^acsm

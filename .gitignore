@@ -29,14 +29,3 @@
 
 # Project-specific docker configurations
 /.docker/
-/.claude/
-
-# Otros archivos que necesito ignorar
-
-AFIP_WEBSERVICES_ARQUITECTURA.md
-INSTALACION_MODULO_URLS.md
-CLAUDE.md
-
-# Enlaces simbólicos de desarrollo
-/arcaws
-verificar-urls-arca.sh
