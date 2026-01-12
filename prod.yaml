@@ -58,14 +58,14 @@ services:
       traefik.http.routers.acsm-18-0-prod-main-secure-0.tls: "true"
       traefik.http.routers.acsm-18-0-prod-main-secure-0.tls.certResolver: letsencrypt
       traefik.http.routers.acsm-18-0-prod-longpolling-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar`) && Path(`/websocket`)
+        Host(`gestion.aeroclubsanmartin.com.ar`) && PathPrefix(`/websocket`)
       traefik.http.routers.acsm-18-0-prod-longpolling-0.service: acsm-18-0-prod-longpolling
       traefik.http.routers.acsm-18-0-prod-longpolling-0.middlewares:
         acsm-18-0-prod-addSTS, acsm-18-0-prod-forceSecure,
         acsm-18-0-prod-override-ws-headers
       traefik.http.routers.acsm-18-0-prod-longpolling-0.priority: 20
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.rule:
-        Host(`gestion.aeroclubsanmartin.com.ar`) && Path(`/websocket`)
+        Host(`gestion.aeroclubsanmartin.com.ar`) && PathPrefix(`/websocket`)
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.service: acsm-18-0-prod-longpolling
       traefik.http.routers.acsm-18-0-prod-longpolling-secure-0.middlewares:
         acsm-18-0-prod-addSTS, acsm-18-0-prod-forceSecure,
