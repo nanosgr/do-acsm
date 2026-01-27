@@ -30,3 +30,4 @@
 # Project-specific docker configurations
 /.docker/
 /docs/
+GUIA_CONFIGURACION_PRODUCCION.md
