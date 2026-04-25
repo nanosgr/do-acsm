@@ -1,5 +1,8 @@
 web: -'*'
-server-ux: -'*'
+server-tools: -'*'
+server-ux:
+  - base_tier_validation
+  - base_tier_validation_forward
 account-financial-tools: -'*'
 reporting-engine: -'*'
 account-financial-reporting: -'*'
@@ -8,3 +11,10 @@ ingadhoc-account-invoicing: -'*'
 ingadhoc-account-financial-tools: -'*'
 ingadhoc-account-payment: -'*'
 ingadhoc-odoo-argentina-ce: -'*'
+calendar:
+  - resource_booking
+sale-workflow:
+  - sale_resource_booking
+timesheet:
+  - hr_timesheet_begin_end
+  - sale_timesheet_invoice_link

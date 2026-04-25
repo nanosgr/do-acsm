@@ -22,6 +22,7 @@
 !/.vscode/settings.json
 !/.vscode/tasks.json
 /odoo/custom/src/private/.vscode/*
+/odoo/custom/src/private/*
 /.venv
 /doodba.*.code-workspace
 /src
@@ -31,3 +32,10 @@
 /.docker/
 /docs/
 GUIA_CONFIGURACION_PRODUCCION.md
+INSTRUCTIVO_PRUEBA_AEROCLUB.md
+RESUMEN_DESARROLLO_AEROCLUB.md
+TRADUCCION_INSTRUCCIONES.md
+ANALISIS_OCA_FLEET_MAINTENANCE.md
+CAMBIOS_INTEGRACION_FLEET.md
+CLAUDE.md
+CLAUDE.md

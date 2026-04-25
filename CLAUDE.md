@@ -167,10 +167,17 @@ invoke scaffold my_new_module --path /some/path  # Create at specific path
 
 1. Create or navigate to module in `odoo/custom/src/private/`
 2. Make code changes
-3. Install/update the module: `invoke install -m my_module restart`
+3. Update the module (choose one):
+   - **Quick update** (preferred for iteration):
+     `docker-compose run --rm odoo odoo -d devel -u my_module --stop-after-init`
+   - **Full reinstall**: `invoke install -m my_module restart`
 4. Run tests: `invoke test -m my_module`
 5. Update translations if needed: `invoke updatepot -m my_module`
 6. Lint code: `invoke lint`
+
+**Note**: Use `-u` (update) for faster iteration during development. It applies changes
+without reinstalling the entire module. Use `-i` (install) only for initial installation
+or when you need a clean slate.
 
 ### Adding New Dependencies
 
@@ -305,3 +312,86 @@ Example scripts in project root (if present):
 - Check WSAA authentication
 - Query Padrón webservice
 - Validate certificate configuration
+
+## Custom Modules Architecture
+
+### Aeroclub Flight Booking Module
+
+The `aeroclub_flight_booking` module
+(`odoo/custom/src/private/aeroclub_flight_booking/`) is a custom module implementing a
+dual system for flight operations and flight instruction management. It extends the
+`resource_booking` module with aviation-specific functionality.
+
+**Dual System Architecture:**
+
+- **Flight Operations**: Direct bookings by pilots/instructors (no student
+  involvement) - simplified workflow
+- **Flight Instructions**: Student-initiated requests requiring instructor approval and
+  resource assignment - full workflow with approvals
+
+**Key Architecture Decisions:**
+
+1. **Hybrid Resource Model**: Instead of using the standard `resource.resource` system
+   from `resource_booking`, this module uses direct fields:
+
+   - `vehicle_id` (Many2one to `fleet.vehicle`) for aircraft
+   - `instructor_id` (Many2one to `res.partner`) for instructors
+   - This bypasses the `resource.booking.combination` system
+
+2. **Resource Validation Override**: The `_check_scheduled_meeting_has_resources()`
+   constraint is overridden to skip resource validation for flight bookings, since they
+   manage resources directly.
+
+3. **Security Model**:
+
+   - Three groups: `Student`, `Instructor`, `Manager`
+   - Students do NOT inherit `resource_booking.group_user` (to avoid restrictive base
+     rules)
+   - Record rules use `create_uid` in addition to `partner_id`/`partner_ids` to ensure
+     creators can always access their bookings
+   - Access rules defined in `security/ir.model.access.csv` for all related models
+
+4. **Flight Types**: Two billing models via `aeroclub.flight.type`:
+
+   - **Airplane**: Billed by flight hours (`billing_unit='hour'`)
+   - **Glider**: Billed by tows (`billing_unit='tow'`)
+
+5. **Workflow States**:
+   - Draft → Pending Instructor → Instructor Confirmed → Scheduled → Completed →
+     Invoiced
+   - Instructor can: Confirm, Reject, Request Reassignment
+   - Completion wizard captures actual duration/tow count
+   - Sale order generation based on `flight_type_id.product_id`
+
+**Important Files:**
+
+- `models/flight_booking.py`: Main booking model extending `resource.booking`
+- `models/flight_type.py`: Flight instruction types configuration
+- `models/res_partner.py`: Extends partner with `is_instructor`, `is_student` flags
+- `security/security.xml`: Groups and record rules
+- `security/ir.model.access.csv`: Model access permissions
+
+### Security Architecture for Custom Modules
+
+When creating modules that extend `resource_booking` or similar base modules with
+restrictive rules:
+
+1. **Avoid Group Inheritance**: Don't inherit groups like `resource_booking.group_user`
+   if their record rules are too restrictive for your use case.
+
+2. **Use create_uid in Rules**: Always include `('create_uid', '=', user.id)` in record
+   rules to ensure users can access records they create, even during the brief moment
+   before related fields are set.
+
+3. **Override Constraints**: Use `super()` pattern to selectively override constraints
+   that don't apply to your extended model.
+
+4. **Grant Model Access**: Define `ir.model.access` for all models users interact with:
+
+   - Main model (`resource.booking`)
+   - Related models (`resource.booking.type`, `resource.resource`, `fleet.vehicle`,
+     etc.)
+   - Even if read-only, users need access to see field values
+
+5. **Session Refresh**: After updating groups or `implied_ids`, users must log out and
+   log back in for permission changes to apply.

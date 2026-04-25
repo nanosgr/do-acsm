@@ -24,6 +24,15 @@
   merges:
     - web $ODOO_VERSION
 
+./server-tools:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    server-tools: https://github.com/OCA/server-tools.git
+  target: server-tools $ODOO_VERSION
+  merges:
+    - server-tools $ODOO_VERSION
+
 ./server-ux:
   defaults:
     depth: $DEPTH_DEFAULT
@@ -104,3 +113,30 @@
   target: ingadhoc $ODOO_VERSION
   merges:
     - ingadhoc $ODOO_VERSION
+
+./calendar:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    calendar: https://github.com/OCA/calendar.git
+  target: calendar $ODOO_VERSION
+  merges:
+    - calendar $ODOO_VERSION
+
+./sale-workflow:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    sale-workflow: https://github.com/OCA/sale-workflow.git
+  target: sale-workflow $ODOO_VERSION
+  merges:
+    - sale-workflow $ODOO_VERSION
+
+./timesheet:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    timesheet: https://github.com/OCA/timesheet.git
+  target: timesheet $ODOO_VERSION
+  merges:
+    - timesheet $ODOO_VERSION
