@@ -8,6 +8,8 @@ domains_migration: {}
 domains_prod:
   - hosts:
       - aeroclubsanmartin.com.ar
+  - hosts:
+      - gestion.aeroclubsanmartin.com.ar
 domains_test: {}
 gitlab_url: ""
 odoo_dbfilter: ^acsm
