@@ -24,6 +24,15 @@
   merges:
     - web $ODOO_VERSION
 
+./mis-builder:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    mis-builder: https://github.com/OCA/mis-builder.git
+  target: mis-builder $ODOO_VERSION
+  merges:
+    - mis-builder $ODOO_VERSION
+
 ./server-tools:
   defaults:
     depth: $DEPTH_DEFAULT

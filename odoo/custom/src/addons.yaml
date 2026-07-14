@@ -4,6 +4,7 @@ server-ux:
   - base_tier_validation
   - base_tier_validation_forward
 account-financial-tools: -'*'
+mis-builder: -'*'
 reporting-engine: -'*'
 account-financial-reporting: -'*'
 ingadhoc-odoo-argentina: -'*'
