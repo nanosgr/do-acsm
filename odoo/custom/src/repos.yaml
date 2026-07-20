@@ -132,6 +132,15 @@
   merges:
     - ingadhoc $ODOO_VERSION
 
+./vikingo_web_responsive:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    nanosgr: https://github.com/nanosgr/vikingo_web_responsive.git
+  target: nanosgr $ODOO_VERSION
+  merges:
+    - nanosgr $ODOO_VERSION
+
 ./calendar:
   defaults:
     depth: $DEPTH_DEFAULT

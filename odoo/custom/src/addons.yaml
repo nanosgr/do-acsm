@@ -13,6 +13,8 @@ ingadhoc-account-invoicing: -'*'
 ingadhoc-account-financial-tools: -'*'
 ingadhoc-account-payment: -'*'
 ingadhoc-odoo-argentina-ce: -'*'
+vikingo_web_responsive:
+  - vikingo_web_responsive
 calendar:
   - resource_booking
 sale-workflow:
